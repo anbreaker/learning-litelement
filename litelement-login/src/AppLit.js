@@ -1,19 +1,39 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 
+import stylesLogin from './styles/styles';
 import './components/LoginLit';
 
 class AppLit extends LitElement {
   static get properties() {
-    return {};
+    return {
+      success: { type: Boolean },
+    };
+  }
+
+  static get styles() {
+    return stylesLogin;
   }
 
   render() {
     return html`
-      <login-lit></login-lit>
+      ${this.success
+        ? html`
+            <main>
+              <h1>Welcome User dd!</h1>
+              <button @click="${this._hideOrShowLogin}">Go Login</button>
+            </main>
+          `
+        : html`
+            <main>
+              <login-lit @login="${this._hideOrShowLogin}"></login-lit>
+            </main>
+          `}
     `;
   }
-}
 
-// https://www.youtube.com/watch?v=mPrwizYpo2s&list=PLZY6lUu6oCWjC4BdA-_jcz6Fesu7LzxUi&index=2
+  _hideOrShowLogin() {
+    this.success = !this.success;
+  }
+}
 
 customElements.define('app-lit', AppLit);

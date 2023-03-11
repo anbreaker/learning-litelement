@@ -44,4 +44,12 @@ export default css`
     height: inherit;
     place-items: center;
   }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
 `;

@@ -16,14 +16,6 @@ export class GetData extends LitElement {
     this.getData();
   }
 
-  _sendData(data) {
-    const { results } = data;
-
-    const apiData = new CustomEvent('api-data', { detail: results, bubbles: true, composed: true });
-
-    this.dispatchEvent(apiData);
-  }
-
   async getData() {
     try {
       const response = await fetch(this.url, { method: this.method });
@@ -34,6 +26,14 @@ export class GetData extends LitElement {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  _sendData(data) {
+    const { results } = data;
+
+    const apiData = new CustomEvent('api-data', { detail: results, bubbles: true });
+
+    this.dispatchEvent(apiData);
   }
 }
 

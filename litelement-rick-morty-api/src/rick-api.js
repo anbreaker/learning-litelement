@@ -2,12 +2,13 @@ import { LitElement, html } from 'lit';
 
 import './components/GetData';
 import './components/ApiTemplate';
+import './components/SearchSimple';
 import cssRick from './styles/rickStyle.js';
 
 class RickMortyApi extends LitElement {
   static get properties() {
     return {
-      wiki: { type: Array },
+      data: { type: Array },
     };
   }
 
@@ -18,12 +19,24 @@ class RickMortyApi extends LitElement {
   constructor() {
     super();
 
-    this.wiki = [];
+    this.data = [];
+    this.copyData = [];
+    this.filterData = [];
+  }
 
-    this.addEventListener('api-data', (ev) => {
-      console.log(ev.detail);
-      this._dataFormat(ev.detail);
-    });
+  _waitingData(ev) {
+    this._dataFormat(ev.detail);
+  }
+
+  _searchFilterData(ev) {
+    this.filterData = ev.detail.filterData;
+    this.valueInput = ev.detail.input;
+
+    if (this.valueInput.length > 0) {
+      this.data = this.filterData;
+    } else {
+      this.data = this.copyData;
+    }
   }
 
   _dataFormat(data) {
@@ -33,14 +46,19 @@ class RickMortyApi extends LitElement {
       characters.push({ gender, id, image, name, species, status });
     });
 
-    this.wiki = characters;
+    this.data = characters;
+    this.copyData = [...characters];
   }
 
   render() {
     return html`
     <api-template></api-template>
 
-    <get-data url="https://rickandmortyapi.com/api/character" method="GET"/></get-data>
+    <get-data @api-data="${this._waitingData}" url="https://rickandmortyapi.com/api/character" method="GET"/></get-data>
+
+    <search-simple .originalData="${this.copyData}" 
+    @filter-data="${this._searchFilterData}">
+    </search-simple>
 
     <div class="container">
       ${this.dataTemplates}
@@ -50,7 +68,7 @@ class RickMortyApi extends LitElement {
 
   get dataTemplates() {
     return html`
-      ${this.wiki.map(
+      ${this.data.map(
         (character) =>
           html`
             <div class="card">
