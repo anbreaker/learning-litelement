@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { html, render } from './node_modules/lit-html/lit-html.js';
 
 import './components/GetData';
 import './components/ApiTemplate';

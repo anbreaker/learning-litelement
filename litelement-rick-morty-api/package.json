@@ -7,8 +7,8 @@
   "type": "module",
   "scripts": {
     "analyze": "cem analyze --litelement",
-    "build": "",
-    "start": "web-dev-server"
+    "build": "npx wds --open --watch --node-resolve",
+    "start": "web-dev-server --node-resolve --open --watch"
   },
   "dependencies": {
     "lit": "^2.7.4"
