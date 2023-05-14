@@ -1,0 +1,24 @@
+{
+  "name": "vite-lit-element-rick-api",
+  "version": "0.0.0",
+  "main": "dist/rick-api.es.js",
+  "exports": {
+    ".": "./dist/rick-api.es.js"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0"
+  },
+  "devDependencies": {
+    "vite": "^4.3.5"
+  }
+}
