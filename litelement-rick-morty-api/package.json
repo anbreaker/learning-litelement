@@ -7,7 +7,8 @@
   "type": "module",
   "scripts": {
     "analyze": "cem analyze --litelement",
-    "build": "npx wds --open --watch --node-resolve",
+    "build": "esbuild --bundle src/rick-api.js --outfile=build/main.js",
+    "watch": "esbuild --bundle src/rick-api.js --outfile=build/main.js --watch",
     "start": "web-dev-server --node-resolve --open --watch"
   },
   "dependencies": {
