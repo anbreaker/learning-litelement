@@ -5,7 +5,7 @@ import { resolve } from 'path';
 export default defineConfig({
   base: '/vite-lit-element-rick-api/',
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     lib: {
       entry: 'src/rick-api.js',
       formats: ['es'],
