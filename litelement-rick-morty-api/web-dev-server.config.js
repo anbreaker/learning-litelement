@@ -10,9 +10,9 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   nodeResolve: {
     exportConditions: ['browser', 'development'],
   },
-  
+
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
-  // esbuildTarget: 'auto'
+  esbuildTarget: ['auto'],
 
   /** Set appIndex to enable SPA routing */
   appIndex: './index.html',
