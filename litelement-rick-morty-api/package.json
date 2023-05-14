@@ -7,8 +7,8 @@
   "type": "module",
   "scripts": {
     "analyze": "cem analyze --litelement",
-    "build": "esbuild --bundle src/rick-api.js --outfile=build/main.js",
-    "watch": "esbuild --bundle src/rick-api.js --outfile=build/main.js --watch",
+    "build": "esbuild --bundle src/rick-api.js --outfile=www/main.js",
+    "watch": "esbuild --bundle src/rick-api.js --outfile=www/main.js --watch",
     "start": "web-dev-server --node-resolve --open --watch"
   },
   "dependencies": {
